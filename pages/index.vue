@@ -17,10 +17,10 @@
         >{{dares[selectedDare].dare}}</p>
 
         <!-- Roll the dice -->
-        <a
-          class="inline-block rounded bg-black py-3 px-4 cursor-pointer border border-grey shadow-lg"
+        <button
+          class="inline-block py-3 px-5 cursor-pointer font-bold shadow-lg rounded-full"
           @click="generateNewDare()"
-        >Roll the dice</a>
+        >Roll the dice</button>
       </div>
     </section>
 
@@ -74,5 +74,9 @@ export default {
   height: 160px;
   display: block;
   text-indent: -99999px;
+}
+button {
+  background: #cecece;
+  /* border: 1px solid rgb(46, 46, 46); */
 }
 </style>
