@@ -18,7 +18,7 @@
 
         <!-- Roll the dice -->
         <a
-          class="inline-block rounded py-3 px-4 cursor-pointer border border-grey shadow-lg"
+          class="inline-block rounded bg-black py-3 px-4 cursor-pointer border border-grey shadow-lg"
           @click="generateNewDare()"
         >Roll the dice</a>
       </div>
@@ -68,9 +68,9 @@ export default {
   color: transparent;
 }
 .logo {
-  background: url('~assets/images/logo.png') no-repeat;
+  background: url('~assets/images/logo.png') no-repeat center center;
   background-size: contain;
-  width: 280px;
+  width: 250px;
   height: 160px;
   display: block;
   text-indent: -99999px;

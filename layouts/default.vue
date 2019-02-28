@@ -10,6 +10,6 @@ html {
 }
 body {
   background: url('~assets/images/broken_noise_@2X.png');
-  background-size: 476px;
+  background-size: 400px;
 }
 </style>
