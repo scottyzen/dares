@@ -1,17 +1,19 @@
 <template>
-  <div class="container h-screen text-grey-light pt-2 flex flex-col">
-    <header>
-      <h1 class="mt-4 text-gradient text-5xl logo mx-auto">Extreme Dares</h1>
+  <div class="h-screen text-grey-light pt-2 flex flex-col">
+    <header class="container">
+      <h1 class="logo mx-auto">Extreme Dares</h1>
     </header>
 
-    <section class="flex-1">
-      <div
-        v-if="dares.length <= 0"
-      >No more dare. If you made it this far give yourself a pat on the back.</div>
+    <section class="container flex-1">
+      <div v-if="dares.length <= 0" class="block text-center my-16">
+        <p
+          class="max-w-sm font-hairline text-2xl mx-auto my-10 leading-tight"
+        >No more dare. If you made it this far give yourself a pat on the back.</p>
+      </div>
       <div v-else class="block text-center my-16">
         <!-- Dare -->
         <p
-          class="max-w-sm font-hairline text-2xl mx-auto mt-6 mb-16 leading-tight"
+          class="max-w-sm font-hairline text-2xl mx-auto my-10 leading-tight"
         >{{dares[selectedDare].dare}}</p>
 
         <!-- Roll the dice -->
@@ -23,7 +25,7 @@
     </section>
 
     <footer>
-      <p class="my-4 text-sm font-thin leading-tight">
+      <p class="p-4 text-sm font-thin leading-tight">
         <span class="text-red-light">WARNING</span> Although these are made for fun, they are not for the faint hearted. Do them at your own risk. You have been warned.
       </p>
     </footer>
@@ -68,8 +70,9 @@ export default {
 .logo {
   background: url('~assets/images/logo.png') no-repeat;
   background-size: contain;
-  width: 300px;
-  height: 180px;
+  width: 280px;
+  height: 160px;
   display: block;
+  text-indent: -99999px;
 }
 </style>
