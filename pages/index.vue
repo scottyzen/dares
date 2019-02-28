@@ -1,10 +1,10 @@
 <template>
-  <div class="h-screen text-grey-light pb-8 flex flex-col">
+  <div class="h-screen text-grey-light pt-2 flex flex-col">
     <header class="container">
       <h1 class="logo mx-auto">Extreme Dares</h1>
     </header>
 
-    <section class="container flex-1" v-if="agreed">
+    <section class="container flex-1 pb-16" v-if="agreed">
       <div v-if="dares.length <= 0" class="block text-center my-16 max-w-sm mx-auto">
         <!-- Game over -->
         <p class="text-3xl">Completed it!</p>
@@ -18,7 +18,7 @@
       <div v-else class="block text-center py-16 flex flex-col h-full">
         <p class="flex-1 text-2xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
         <div>
-          <button @click="generateNewDare()">Roll the dice</button>
+          <button @click.prevent="generateNewDare()">Roll the dice</button>
         </div>
       </div>
     </section>
@@ -95,6 +95,7 @@ button {
   display: inline-block;
   font-weight: bold;
   cursor: pointer;
+  font-size: 1.125rem;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
 }
 </style>
