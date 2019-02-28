@@ -4,46 +4,43 @@
       <h1 class="logo mx-auto">Extreme Dares</h1>
     </header>
 
-    <section class="container flex-1">
-      <div v-if="dares.length <= 0" class="block text-center my-16">
+    <section class="container flex-1" v-if="agreed">
+      <div v-if="dares.length <= 0" class="block text-center my-16 max-w-sm mx-auto">
+        <!-- Game over -->
+        <p class="text-3xl">Completed it!</p>
         <p
-          class="max-w-sm font-hairline text-2xl mx-auto my-10 leading-tight"
+          class="font-hairline text-xl my-10 leading-tight"
         >No more dare. If you made it this far give yourself a pat on the back.</p>
+        <button @click="startAgain()">Start Again</button>
       </div>
-      <div v-else class="block text-center my-16">
-        <!-- Dare -->
-        <p
-          class="max-w-sm font-hairline text-2xl mx-auto my-10 leading-tight"
-        >{{dares[selectedDare].dare}}</p>
 
-        <!-- Roll the dice -->
-        <button
-          class="inline-block py-3 px-5 cursor-pointer font-bold shadow-lg rounded-full"
-          @click="generateNewDare()"
-        >Roll the dice</button>
+      <!-- Dares -->
+      <div v-else class="block text-center py-16 flex flex-col h-full">
+        <p class="flex-1 font-hairline text-2xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
+        <div>
+          <button @click="generateNewDare()">Roll the dice</button>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <p class="p-4 text-sm font-thin leading-tight">
+    <section v-else class="container p-6">
+      <p class="my-8 font-thin leading-tight">
         <span class="text-red-light">WARNING</span> Although these are made for fun, they are not for the faint hearted. Do them at your own risk. You have been warned.
       </p>
-    </footer>
+      <button @click="agreeToPlay()">Agree</button>
+    </section>
   </div>
 </template>
 
 <script>
 import data from '../assets/data'
 
-var daresList = data
+let daresList = data
 
 export default {
-  head: {
-    title: 'Welcome',
-    meta: [{ hid: 'description', name: 'description', content: 'Welcome' }]
-  },
   data() {
     return {
+      agreed: false,
       dares: daresList,
       selectedDare: Math.floor(Math.random() * daresList.length)
     }
@@ -55,6 +52,21 @@ export default {
     },
     randomNumber() {
       return Math.floor(Math.random() * this.dares.length)
+    },
+    agreeToPlay() {
+      // Set local storage
+      localStorage.setItem('agree', true)
+    },
+    startAgain() {
+      this.$router.go()
+    }
+  },
+  created() {
+    if (process.browser) {
+      // Check if the user has already agreed to play
+      if (localStorage.getItem('agree')) {
+        this.agreed = true
+      }
     }
   }
 }
@@ -77,6 +89,11 @@ export default {
 }
 button {
   background: #cecece;
-  /* border: 1px solid rgb(46, 46, 46); */
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
 }
 </style>
