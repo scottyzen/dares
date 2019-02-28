@@ -16,7 +16,7 @@
 
       <!-- Dares -->
       <div v-else class="block text-center py-16 flex flex-col h-full">
-        <p class="flex-1 font-hairline text-2xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
+        <p class="flex-1 text-xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
         <div>
           <button @click="generateNewDare()">Roll the dice</button>
         </div>
@@ -56,6 +56,7 @@ export default {
     agreeToPlay() {
       // Set local storage
       localStorage.setItem('agree', true)
+      this.agreed = true
     },
     startAgain() {
       this.$router.go()
