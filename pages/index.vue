@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen text-grey-light pt-2 flex flex-col">
+  <div class="h-screen text-grey-light pb-8 flex flex-col">
     <header class="container">
       <h1 class="logo mx-auto">Extreme Dares</h1>
     </header>
@@ -16,7 +16,7 @@
 
       <!-- Dares -->
       <div v-else class="block text-center py-16 flex flex-col h-full">
-        <p class="flex-1 text-xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
+        <p class="flex-1 text-2xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
         <div>
           <button @click="generateNewDare()">Roll the dice</button>
         </div>
