@@ -22,7 +22,7 @@
         >
           <p
             v-if="showDare"
-            class="flex-1 flex text-2xl font-bold p-8 leading-tight mt-16 mb-32 text-left shadow-lg blue"
+            class="flex-1 flex text-2xl font-bold p-8 leading-tight mt-16 mb-32 text-left shadow-lg dare"
           >{{dares[selectedDare].dare}}</p>
         </transition>
         <div>
@@ -48,7 +48,7 @@ let daresList = data
 export default {
   data() {
     return {
-      agreed: false,
+      agreed: true,
       dares: daresList,
       showDare: true,
       selectedDare: Math.floor(Math.random() * daresList.length)
@@ -88,10 +88,10 @@ export default {
 
  <style>
 .logo {
-  background: #1a1a1a url('~assets/images/logo.png') no-repeat center center;
+  background: url('~assets/images/logo.png') no-repeat center center;
   background-size: contain;
   width: 100%;
-  height: 175px;
+  height: 170px;
   display: block;
   text-indent: -99999px;
 }
@@ -113,12 +113,10 @@ button:active {
   transform: translateY(-4px);
   box-shadow: 0 18px 30px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.08);
 }
-.yellow {
-  background: #cfbc7a;
-  color: #433d3b;
-}
-.blue {
-  background: #e2e2e2;
-  color: #2a2a2a;
+/* :style="{'background-image': 'url(' + require(`../assets/images/${dares[selectedDare].image}`) + ')'}" */
+.dare {
+  background: #dddddd;
+  background-size: cover;
+  color: #2e2e2e;
 }
 </style>
