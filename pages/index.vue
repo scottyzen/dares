@@ -15,7 +15,7 @@
       </div>
 
       <!-- Dares -->
-      <div v-else class="text-center">
+      <div v-else class="text-center h-full">
         <transition
           enter-active-class="animated zoomInLeft"
           leave-active-class="animated zoomOutRight"
