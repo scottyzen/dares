@@ -16,7 +16,15 @@
 
       <!-- Dares -->
       <div v-else class="block text-center py-16 flex flex-col h-full">
-        <p class="flex-1 text-2xl my-10 leading-tight">{{dares[selectedDare].dare}}</p>
+        <transition
+          enter-active-class="animated zoomInLeft"
+          leave-active-class="animated zoomOutRight"
+        >
+          <p
+            v-if="showDare"
+            class="flex-1 text-2xl my-10 leading-tight"
+          >{{dares[selectedDare].dare}}</p>
+        </transition>
         <div>
           <button @click.prevent="generateNewDare()">Roll the dice</button>
         </div>
@@ -42,13 +50,18 @@ export default {
     return {
       agreed: false,
       dares: daresList,
+      showDare: true,
       selectedDare: Math.floor(Math.random() * daresList.length)
     }
   },
   methods: {
     generateNewDare() {
+      this.showDare = false
       this.dares.splice(this.selectedDare, 1)
       this.selectedDare = this.randomNumber()
+      setTimeout(() => {
+        this.showDare = true
+      }, 800)
     },
     randomNumber() {
       return Math.floor(Math.random() * this.dares.length)
@@ -74,12 +87,6 @@ export default {
 </script>
 
  <style>
-.text-gradient {
-  background: linear-gradient(to right, #d9a185 -100%, #d2506f 100%);
-  background-clip: text;
-  display: inline-block;
-  color: transparent;
-}
 .logo {
   background: url('~assets/images/logo.png') no-repeat center center;
   background-size: contain;
@@ -97,5 +104,13 @@ button {
   cursor: pointer;
   font-size: 1.125rem;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  transition: all 300ms ease-in-out;
+}
+button:hover {
+  background: #fff;
+}
+button:active {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.08);
 }
 </style>
