@@ -15,7 +15,7 @@
       </div>
 
       <!-- Dares -->
-      <div v-else class="block text-center py-16 flex flex-col h-full">
+      <div v-else class="block text-center py-16 flex flex-col h-full justify-end items-center">
         <transition
           enter-active-class="animated zoomInLeft"
           leave-active-class="animated zoomOutRight"
