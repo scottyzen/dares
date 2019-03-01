@@ -1,10 +1,10 @@
 <template>
-  <div class="h-screen text-grey-light pt-2 flex flex-col">
+  <div class="h-screen text-grey-light flex flex-col">
     <header>
       <h1 class="logo mx-auto mt-8">Extreme Dares</h1>
     </header>
 
-    <section class="container flex-1" v-if="agreed">
+    <section class="container flex-1 mt-16" v-if="agreed">
       <div v-if="dares.length <= 0" class="block text-center my-16 max-w-sm mx-auto">
         <!-- Game over -->
         <p class="text-3xl">Completed it!</p>
@@ -15,17 +15,18 @@
       </div>
 
       <!-- Dares -->
-      <div v-else class="block text-center pb-16 flex flex-col h-full justify-end items-center">
+      <div v-else class="text-center">
         <transition
           enter-active-class="animated zoomInLeft"
           leave-active-class="animated zoomOutRight"
         >
           <p
             v-if="showDare"
-            class="flex-1 flex text-2xl font-bold p-8 leading-tight mt-16 mb-32 text-left shadow-lg dare"
+            class="text-xl font-bold p-8 leading-tight text-left shadow-lg dare block"
           >{{dares[selectedDare].dare}}</p>
         </transition>
-        <div>
+
+        <div class="fixed pin-b pin-l pin-r mb-16">
           <button @click.prevent="generateNewDare()">Roll the dice</button>
         </div>
       </div>
@@ -110,8 +111,8 @@ button:hover {
   background: #fff;
 }
 button:active {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 30px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.08);
+  transform: translateY(4px);
+  box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.2), 0 4px 12px 0 rgba(0, 0, 0, 0.1);
 }
 /* :style="{'background-image': 'url(' + require(`../assets/images/${dares[selectedDare].image}`) + ')'}" */
 .dare {
