@@ -1,10 +1,10 @@
 <template>
   <div class="h-screen text-grey-light pt-2 flex flex-col">
-    <header class="container">
-      <h1 class="logo mx-auto">Extreme Dares</h1>
+    <header>
+      <h1 class="logo mx-auto mt-8">Extreme Dares</h1>
     </header>
 
-    <section class="container flex-1 pb-16" v-if="agreed">
+    <section class="container flex-1" v-if="agreed">
       <div v-if="dares.length <= 0" class="block text-center my-16 max-w-sm mx-auto">
         <!-- Game over -->
         <p class="text-3xl">Completed it!</p>
@@ -15,14 +15,14 @@
       </div>
 
       <!-- Dares -->
-      <div v-else class="block text-center py-16 flex flex-col h-full justify-end items-center">
+      <div v-else class="block text-center pb-16 flex flex-col h-full justify-end items-center">
         <transition
           enter-active-class="animated zoomInLeft"
           leave-active-class="animated zoomOutRight"
         >
           <p
             v-if="showDare"
-            class="flex-1 text-2xl my-10 leading-tight"
+            class="flex-1 flex text-2xl font-bold p-8 leading-tight mt-16 mb-32 text-left shadow-lg blue"
           >{{dares[selectedDare].dare}}</p>
         </transition>
         <div>
@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <section v-else class="container p-6">
+    <section v-else class="container flex-1">
       <p class="my-8 font-thin leading-tight">
         <span class="text-red-light">WARNING</span> Although these are made for fun, they are not for the faint hearted. Do them at your own risk. You have been warned.
       </p>
@@ -88,10 +88,10 @@ export default {
 
  <style>
 .logo {
-  background: url('~assets/images/logo.png') no-repeat center center;
+  background: #1a1a1a url('~assets/images/logo.png') no-repeat center center;
   background-size: contain;
-  width: 250px;
-  height: 160px;
+  width: 100%;
+  height: 175px;
   display: block;
   text-indent: -99999px;
 }
@@ -112,5 +112,13 @@ button:hover {
 button:active {
   transform: translateY(-4px);
   box-shadow: 0 18px 30px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.08);
+}
+.yellow {
+  background: #cfbc7a;
+  color: #433d3b;
+}
+.blue {
+  background: #e2e2e2;
+  color: #2a2a2a;
 }
 </style>
